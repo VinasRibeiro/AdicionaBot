@@ -5,6 +5,10 @@ import time
 import json
 
 
+def bt_Concluido():
+    #Este botão esta no pop up que pede email e nota para conectar
+    driver.find_element_by_xpath("//button[@aria-label='Concluído']").click()
+
 def adiciona_nota(nota):
     #Esta função adiciona uma mensagem na nota de conecção
     driver.find_element_by_xpath("//button[@aria-label='Adicionar nota']").click()
@@ -44,9 +48,9 @@ def principal(nota, email):
         driver.implicitly_wait(2)
         clickabtAzul()
         adiciona_nota(nota)
-        #driver.find_elements_by_xpath("//button[@aria-label='Concluído']")[0].click()
+        bt_Concluido()
         driver.implicitly_wait(5)
-
+        
     except Exception as msgerro:
 
         try:
@@ -55,10 +59,12 @@ def principal(nota, email):
             idemail = driver.find_element_by_id("send-invite-modal").text
             if idemail == 'Você pode personalizar este convite':
                 adiciona_nota(nota)
+                bt_Concluido()
             else:
                 try:
                     fld_reg_email(email)                             
                     adiciona_nota(nota)
+                    bt_Concluido()
                 except Exception as msgerro2:
                     print("Campo email não encontrado")               
             
@@ -71,16 +77,15 @@ def principal(nota, email):
                 print("Perfil não existe")
 
 
-
 driver = webdriver.Chrome()
 driver.implicitly_wait(5)
-    
 url = "https://www.linkedin.com/uas/login"
 email = ""
 senha = ''
-nota = "teste"
+nota = "Olá, Sou participante do Desafio IBM, estou conectando todos do chat network. \n Fiz uma automação usando python se quiser usar acesse meu github. \n https://github.com/VinasRibeiro/AdicionaBot \n Boa sorte."
 
 login(email, senha, url)
+principal(nota, email)
 
 with open('redessocials.json') as json_file:
     data = json.load(json_file)
@@ -90,11 +95,3 @@ for l in data["linkedin"]:
     principal(nota, email)
 
 driver.close()
-
-
-
-
-
-
-
-
