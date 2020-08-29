@@ -1,3 +1,6 @@
+#Este programa gera uma tela com campo email e senha, ainda não implementei o campo nota, para inserir uma nota ao adicionar uma pessoa
+#Falta ativar o comando para clickar no botão adicionar
+
 from tkinter import  *
 import tkinter as tk
 from selenium import webdriver
@@ -98,7 +101,7 @@ def login(email, senha, url):
 
 app = tk.Tk()
 app.title("Adiciona Linkedin")
-driver = webdriver.Firefox()
+driver = webdriver.Chrome()
 driver.implicitly_wait(5)
 app.geometry("300x100")
 
