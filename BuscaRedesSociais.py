@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import json
 
-driver = webdriver.Firefox()
+driver = webdriver.Chrome()
 
 driver.implicitly_wait(10)
 

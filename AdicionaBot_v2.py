@@ -97,17 +97,18 @@ def login(email, senha, url):
     driver.find_element_by_xpath("//button[@type='submit']").click()
 
 app = tk.Tk()
+app.title("Adiciona Linkedin")
 driver = webdriver.Firefox()
 driver.implicitly_wait(5)
-#app.geometry("300x100")
+app.geometry("300x100")
 
-e = Entry(app, width=50, borderwidth=5)
+e = Entry(app, width=30, borderwidth=5)
 e.grid(row=0, column=2)
 #e.pack(side=tk.RIGHT)
 myLabel = Label(app, text="Email")
 myLabel.grid(row=0, column=1)
 
-ps = Entry(app, width=50, borderwidth=5)
+ps = Entry(app, width=30, borderwidth=5)
 ps.grid(row=1, column=2)
 
 myLabel2 = Label(app, text="Senha")
